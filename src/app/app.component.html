@@ -33,6 +33,8 @@
             [class.is-invalid]="check && userinput.touched" name="userinput" #userinput="ngModel"
             (change)="checkData(userinput.value)" mdbInput type="number" required id="form1" class="form-control"
             [(ngModel)]="userdata">
+            <!-- whenever the input value changes, checkData method is called to check the entered data-->
+            
           </label>
         <button [disabled]="oninit" (click)="onClick()" type="button" class="btn btn-primary">Lock Kr Du ? </button>
       </form>
