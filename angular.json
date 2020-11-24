@@ -24,9 +24,14 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./src/assets/js/custom.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Game15"
+    }
+  },
+  "defaultProject": "Game15",
+  "cli": {
+    "analytics": "d2a2e3a6-ca39-4cd5-9798-319a8ed96c4f"
+  }
 }
