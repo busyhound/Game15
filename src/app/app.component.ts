@@ -1,3 +1,8 @@
+  // This file contain all the logic for root view
+  // Need to be commented
+  // Developer working on this file please keep this file well commented
+  //Author : Rahul Kumar Chaudhary
+
   //import { Component } from '@angular/core';
   import {FormsModule} from '@angular/forms';
   import {NgModule} from '@angular/core';
@@ -10,10 +15,6 @@
   //declare const chaneBoyname: any;
   //declare const youTube: any;
   //import { Boy } from './boy';
-
-
-
-
 
 
   @Component({

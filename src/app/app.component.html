@@ -1,76 +1,91 @@
-<app-top-bar></app-top-bar>
+<!-- This is the Root component View-->
+
+<app-top-bar></app-top-bar>   <!-- This is a child component for navigation war-->
+
 <div class="vl"></div>
 <br>
-  <div class="container">
+<div class="container">
+<!-- Main container-->
+  <div class="col-sm-3 col-md-6">
+<!-- Grid -->
+    <h1 class="textAlignCenter" id="textAlignCenter"> {{GameZone}}</h1>  <!-- Header -->
+    <hr>
 
-    <div class="col-sm-3 col-md-6" >
-      <h1 class="textAlignCenter" id="textAlignCenter"> {{GameZone}}</h1><hr>
-        <div> <p class="text-successs">Start The game just by entering Number here. Isn't is very easy?</p>  </div><br>
-      <div class="md-form" id="textAlignCenter"                                      >
-        <form #gameform="ngForm">
-          <small class="text-danger" [class.d-none]="!check || userinput.untouched">Please Enter The Number according to the rule</small>
-          <label class="form1" class="">Enter Your Number : <input [disabled]="disin" [class.is-invalid]="check && userinput.touched" name="userinput" #userinput="ngModel" (change)="checkData(userinput.value)" mdbInput type="number" required id="form1" class="form-control" [(ngModel)]="userdata"></label>
-          <button [disabled]="oninit" (click)="onClick()" type="button" class="btn btn-primary">Lock Kr Du ? </button>
-        </form><hr><hr>
-      </div>
-      <div>
-        <h2 id="textAlignCenter">Game Rule</h2>
-        <p id="textAlignCenter"><b> Note</b> : Aim is to Reach the score of 15 First. The Player to reach the score of 15 First Wins the Game </p>
-        <h2 class="div_chat text-progress"> {{player}} have to Select Number Between {{CGC}} And {{upperbond}} </h2>
-      </div>
-      <div id="textAlignCenter"><br>
-        <button (click)="restart()" type="button" class="btn btn-primary">Restart </button>
+    <div>
+      <p class="text-successs">Start The game just by entering Number here. Isn't is very easy?</p>
+      <!-- Class binding, small message for user-->
+    </div><br>
 
-      </div>
+    <div class="md-form" id="textAlignCenter">
+      <!-- `input form start here-->
+      <form #gameform="ngForm">
+        <small class="text-danger" [class.d-none]="!check || userinput.untouched">Please Enter The Number according to
+          the rule</small> <!-- this is just error message and is enabled whenever user input wrong number-->
+        <label class="form1" class="">Enter Your Number : 
+          <!-- this input box need to disble if its not the player turn or if the game is over-->
+          <!-- Disbale the input box whenever the user has entered the right number-->
+          <!-- need to fix some bug here-->
+          <input [disabled]="disin"
+            [class.is-invalid]="check && userinput.touched" name="userinput" #userinput="ngModel"
+            (change)="checkData(userinput.value)" mdbInput type="number" required id="form1" class="form-control"
+            [(ngModel)]="userdata">
+          </label>
+        <button [disabled]="oninit" (click)="onClick()" type="button" class="btn btn-primary">Lock Kr Du ? </button>
+      </form>
+
+      <hr>
+      <hr>
     </div>
 
-    <div class="col-sm-9 col-md-6" >
-      <h2 id="textAlignCenter"> Display </h2>
-      <div class="box">
-        <div id="textAlignCenter"><p [class]="colorResponse"> Game Status : {{GameStatus}} </p> </div>
-          <p [class]="turn_class">{{turn}}</p>
+    <div>
+      <h2 id="textAlignCenter">Game Rule</h2>
+      <p id="textAlignCenter"><b> Note</b> : Aim is to Reach the score of 15 First. The Player to reach the score of 15
+        First Wins the Game </p>
+      <h2 class="div_chat text-progress"> {{player}} have to Select Number Between {{CGC}} And {{upperbond}} </h2>
+    </div>
 
-          <p> Total Score : {{CGC}}</p>
+    <div id="textAlignCenter"><br>
+      <button (click)="restart()" type="button" class="btn btn-primary">Restart </button>
 
-      </div><br>
-      <div class="div_chat">
-        <div class="image">
-          <h2 id="textAlignCenter" style="color :#F39C12"> Input History </h2>
+    </div>
+  </div>
 
-          <h2>Chat Messages</h2>
-          <div class="chat-bady">
+  <div class="col-sm-9 col-md-6">
+    <!-- bootstrap Grid property-->
+    <h2 id="textAlignCenter"> Display </h2>
+    <div class="box">
+      <div id="textAlignCenter">
+        <p [class]="colorResponse"> Game Status : {{GameStatus}} </p>
+      </div>
+      <p [class]="turn_class">{{turn}}</p>
+
+      <p> Total Score : {{CGC}}</p>
+
+    </div><br>
+    <div class="div_chat">
+      <div class="image">
+        <h2 id="textAlignCenter" style="color :#F39C12"> Input History </h2>
+
+        <h2>Chat Messages</h2>
+        <div class="chat-bady">
           <div *ngFor="let item of list.reverse(); let i = index; let even = even; let odd=odd">
             <div *ngIf="even">
-            <div [class]="chatcontainer">
-              <img [class]="imgyou" alt="avtar">
-              <p>{{item}}</p>
-              <span class="time-right">{{todaysDataTime}}</span>
-            </div>
+              <div [class]="chatcontainer">
+                <img [class]="imgyou" alt="avtar">
+                <p>{{item}}</p>
+                <span class="time-right">{{todaysDataTime}}</span>
+              </div>
             </div>
             <div *ngIf="odd">
-            <div [class]="chatcontainerdarker">
-              <img [class]="imgcom">
-              <p>{{item}}</p>
-              <span class="time-left">{{todaysDataTime}}</span>
-            </div>
+              <div [class]="chatcontainerdarker">
+                <img [class]="imgcom">
+                <p>{{item}}</p>
+                <span class="time-left">{{todaysDataTime}}</span>
+              </div>
             </div>
           </div>
-
-
-
-
-</div>
-
-
-
-
-
-
         </div>
-
-
-        </div>
-
-
       </div>
     </div>
+  </div>
+</div>
