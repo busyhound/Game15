@@ -16,23 +16,25 @@
   //declare const youTube: any;
   //import { Boy } from './boy';
 
-
   @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
   })
   export class AppComponent {
-    //boy=new Boy("Rahul",5);
+
+    // Here are some bunch of variable to store the value
+
+    // Attribute declaration starts here
+
     today= new Date();
     todaysDataTime = '';
     title = 'Game15';
-    //public check="";
     public check=true;
-    public CGC;
+    public CGC=0;
     public rnd;
     public oninit;
-    public userdata;
+    public userdata;          // To store the user input
     public disin=false;
     public GameStatus;
     colorResponse;
@@ -43,45 +45,29 @@
     imgyou;
     turn_class="";
 
-    turn="";
+    turn="";               // This Variable will save the player turn
     tog=""
-    lowerbond=this.CGC;
-    upperbond;
+    lowerbond=this.CGC;    // Current Game Count. This variable will store the current count value
+    upperbond;             // This attribute the check what is the maxmimum that can be selected by either of the player
     uCGC;
     chatImgYou;
     chatImgCom;
     player="You";
-    //xxx="chat-container darker";
-    //rt="../assets/images/com.png";
-    //yyy="img-com";
-
+   
     GameZone="Game Zone"
 
     bool=true;
     data;
     name: string;
     list=[];
-  //  p="<span style='color:red'> My erro </span>";"
+
+    //Attribute declaration ends here
+    
     @ViewChild('div') div: ElementRef;
     constructor (private renderer: Renderer2){
       this.todaysDataTime = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530');
 
     }
-    //name: string;
-    //empoloyeeID : number;
-  //  empList: Array<Custom> = [];
-  //  public youtube=""
-    //public lowerLimit="";
-    //public upperLimit="";
-    //addElementYou(data) {
-
-  //  const p: HTMLParagraphElement = this.renderer.createElement('h2');
-  //  p.innerHTML ="<span style='color:blue'> You : &nbsp; </span>";
-  //  this.renderer.appendChild(this.div.nativeElement, p)
-  //  this.data=data;
-  //  }
-
-
 
     async delay(ms: number) {
       await new Promise(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("fired"));
@@ -143,6 +129,7 @@
     }
     onClick(){
       this.resetClass();
+      
       this.turn_class="text-danger"
       //this.boy.chaneBoyname("Riffs");
       this.oninit=true;
@@ -226,19 +213,17 @@
 
 
     ngOnInit(): void {
-
-      this.CGC=0;
-      this.setUppberbond();
+      // This method to be called whenever the view is rendered for the first time
+      this.CGC=0;                                                             // Current Game count set to zero
+      this.setUppberbond();                                                   // to Set the maximum digit the player can choose
       this.oninit=true;
-      this.GameStatus="Not Started! Start The Game";
+      this.GameStatus="Not Started! Start The Game";                          // Game Status , a
       this.colorResponse="text-danger";
-      //this.turn="You Trun Now";
       this.chatcontainer="chat-container";
       this.chatcontainerdarker="chat-container darker";
       this.imgcom="img-com";
       this.imgyou="img-you";
-    //  chatImgCom="img-com";
-    //  chatImgYou="img-you";
+   
     }
 
 

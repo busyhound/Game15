@@ -9,6 +9,7 @@
   <div class="col-sm-3 col-md-6">
 <!-- Grid -->
     <h1 class="textAlignCenter" id="textAlignCenter"> {{GameZone}}</h1>  <!-- Header -->
+    <!-- Here GameZone is simply a string . Game Zone="Game Zone"-->
     <hr>
 
     <div>
@@ -19,8 +20,11 @@
     <div class="md-form" id="textAlignCenter">
       <!-- `input form start here-->
       <form #gameform="ngForm">
-        <small class="text-danger" [class.d-none]="!check || userinput.untouched">Please Enter The Number according to
-          the rule</small> <!-- this is just error message and is enabled whenever user input wrong number-->
+
+        <small class="text-danger" [class.d-none]="!check || userinput.untouched"> <!-- Check is a boolean variabvle-->
+          Please Enter The Number according tothe rule
+        </small> <!-- this is just error message and is enabled whenever user input wrong number-->
+
         <label class="form1" class="">Enter Your Number : 
           <!-- this input box need to disble if its not the player turn or if the game is over-->
           <!-- Disbale the input box whenever the user has entered the right number-->
