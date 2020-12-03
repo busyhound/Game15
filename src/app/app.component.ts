@@ -16,153 +16,79 @@
   //declare const youTube: any;
   //import { Boy } from './boy';
 
-
   @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
   })
   export class AppComponent {
-    //boy=new Boy("Rahul",5);
+
+    // Here are some bunch of variable to store the value
+
+    // Attribute declaration starts here
+
     today= new Date();
     todaysDataTime = '';
     title = 'Game15';
-    //public check="";
     public check=true;
-    public CGC;
-    public rnd;
-    public oninit;
-    public userdata;
-    public disin=false;
-    public GameStatus;
-    colorResponse;
+    public CGC=0;              // Current Game Count.Starts with 0
+    public rnd;                // to store the random number. Computer uses this random number to play the game
+    public oninit;            // To Disable the submit button
+    public userdata;          // To store the user input
+    public disin=false;           // boolean. To disable the input box when required
+    public GameStatus;            // To display the game status in view 
+    colorResponse;                // used for class binding. used to hold the class value which need to be active
     //chatresponse="chat-container"
     chatcontainer;
     chatcontainerdarker;
-    imgcom;
-    imgyou;
-    turn_class="";
+    imgcom;                           //to save the profile image name of the player
+    imgyou;                             //to save the profile image name of the player    
+    turn_class="";                    // class binding. to the css class name in order to make the class active
 
-    turn="";
+    turn="";               // This Variable will save the player turn
     tog=""
-    lowerbond=this.CGC;
-    upperbond;
-    uCGC;
-    chatImgYou;
-    chatImgCom;
-    player="You";
-    //xxx="chat-container darker";
-    //rt="../assets/images/com.png";
-    //yyy="img-com";
-
+    lowerbond=this.CGC;    // Current Game Count. This variable will store the current count value
+    upperbond;             // This attribute the check what is the maxmimum that can be selected by either of the player
+    uCGC;                         // upper current window count i.e maximum CGC value for the next round
+    player="You";         // begins with the human
+    // need to improve. This should be adjusted with toss value
+    //Random toss to descide which player will go first ( need to implement yet)
+   
     GameZone="Game Zone"
 
     bool=true;
     data;
     name: string;
     list=[];
-  //  p="<span style='color:red'> My erro </span>";"
+
+    //Attribute declaration ends here
+    
     @ViewChild('div') div: ElementRef;
     constructor (private renderer: Renderer2){
       this.todaysDataTime = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530');
 
     }
-    //name: string;
-    //empoloyeeID : number;
-  //  empList: Array<Custom> = [];
-  //  public youtube=""
-    //public lowerLimit="";
-    //public upperLimit="";
-    //addElementYou(data) {
-
-  //  const p: HTMLParagraphElement = this.renderer.createElement('h2');
-  //  p.innerHTML ="<span style='color:blue'> You : &nbsp; </span>";
-  //  this.renderer.appendChild(this.div.nativeElement, p)
-  //  this.data=data;
-  //  }
-
-
 
     async delay(ms: number) {
       await new Promise(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("fired"));
     }
-    reverseClass(body,bodyDark,imgyou,imgcom){
-      this.chatcontainer=bodyDark;
-      this.chatcontainerdarker=body;
-      this.imgyou=imgcom;
-      this.imgcom=imgyou;
-    }
-    resetClass(){
-      this.chatcontainer="chat-container";
-      this.chatcontainerdarker="chat-container darker";
-      this.imgcom="img-com";
-      this.imgyou="img-you";
-    }
 
-    handleCGC(data){
-      this.CGC=data;
-    }
-    setUppberbond(){
-      this.uCGC=this.CGC+4;
-      if(this.uCGC>=15){
-        this.upperbond=15;
-      }
-      else{
-        this.upperbond=this.CGC+4;
-      }
-    }
-    checkTheWinningParty(player){
-      //this.turn="configurations!" +""
-    //  localCheckPoint=false;
-      if(this.CGC==15){
-        if(player=="you"){
-          this.turn="Congratulation!" + player +" have  Won. You defenitly got brain faster than this Computer"
-          this.GameZone="Game Over! You Won"
-          this.GameStatus="Truely You are One of a kind!";
-          this.colorResponse="text-successs";
-          this.turn_class="text-successs";
-
-        }
-        if(player=="com"){
-          this.turn="Sorry! Looks like this dumb Computer was outsmarts you for this time"
-          this.GameZone="Game Over! Computer Won"
-          this.GameStatus="Ooops ! Better Luck Next Time";
-          this.colorResponse="text-danger";
-          this.turn_class="text-danger";
-        }
-        this.oninit=true;
-        this.disin=true;
-
-
-
-      }
-
-    }
-    restart(){
-      alert("This Feature will be Avialable in Updated Version!");
-    }
     onClick(){
-      this.resetClass();
-      this.turn_class="text-danger"
+      //This function will be called when user enter the valid number and hit the 'Lock kr du' button
+
+      this.resetClass();                                       // Reset everything i.e value of basic attribute to initial value
+      
+      this.turn_class="text-danger"                           // To change the turn. This will change the css color. Class binding is used here
       //this.boy.chaneBoyname("Riffs");
-      this.oninit=true;
-      this.disin=true;
-      this.turn="Wait ! its Computer Turn and it is Still Thinking. Dumb, isn't it?";
-    //  checkTheWinningParty(userdata)
-      //this.addElementYou(this.userdata);
-      //myTest();
-      //youTube();
-      //userdata=userinput.value;
+      this.oninit=true;                                       //
+      this.disin=true;                                        // disable ==true, this will disable the input box
+      this.turn="Wait ! its Computer Turn and it is Still Thinking. Dumb, isn't it?";  // Changed the turn
       this.handleCGC(this.userdata);
-      this.setUppberbond();
-      //let customObj = new Custom();
-      //customObj.Turn = "something";
-      //customObj.Value = 12;
-      //this.empList.push(customObj);
+      this.setUppberbond();     1                             // Changed the upperbod 
       this.bool=true;
       this.list.push("You : "+ this.userdata);
       this.player="Computer";
-      this.checkTheWinningParty("you")
+      this.checkTheWinningParty("you")                        // To check whether the score is reached to winning point or not
 
 
       this.delay(3000).then(any=>{
@@ -199,12 +125,83 @@
       });
     }
 
+    // Onlick method ends
+
+    reverseClass(body,bodyDark,imgyou,imgcom){
+      this.chatcontainer=bodyDark;
+      this.chatcontainerdarker=body;
+      this.imgyou=imgcom;
+      this.imgcom=imgyou;
+      // this method will reverse the above attribute value in order to print in last in firt out order (stack operation)
+    }
+
+    resetClass(){
+      // This method will undo the effect of reverseClass() method
+      this.chatcontainer="chat-container";
+      this.chatcontainerdarker="chat-container darker";
+      this.imgcom="img-com";
+      this.imgyou="img-you";
+    }
+
+    handleCGC(data){
+      this.CGC=data;
+      // this will simply take the user data input and increase the CGC ( Current Game Count) value.
+    }
+    setUppberbond(){
+
+      // This method will set the upper bond of CGC for next round in order to restrict the player to valid input
+      
+      this.uCGC=this.CGC+4;
+      if(this.uCGC>=15){
+        this.upperbond=15;
+        //if CGC has reached at the end
+      }
+      else{
+        this.upperbond=this.CGC+4;
+        // CGC is not at the end
+      }
+    }
+
+    checkTheWinningParty(player){
+     // This funciton will check whether any player has won or not in each round
+
+      if(this.CGC==15){
+        if(player=="you"){
+          this.turn="Congratulation!" + player +" have  Won. You defenitly got brain faster than this Computer"
+          this.GameZone="Game Over! You Won"
+          this.GameStatus="Truely You are One of a kind!";
+          this.colorResponse="text-successs";
+          this.turn_class="text-successs";
+          // Check the winning player and show the message according to the winning player
+
+        }
+        if(player=="com"){
+          this.turn="Sorry! Looks like this dumb Computer was outsmarts you for this time"
+          this.GameZone="Game Over! Computer Won"
+          this.GameStatus="Ooops ! Better Luck Next Time";
+          this.colorResponse="text-danger";
+          this.turn_class="text-danger";
+           // Check the winning player and show the message according to the winning player
+
+        }
+        this.oninit=true;             // Disable the input box
+        this.disin=true;              // Disable the submit button
+
+      }
+
+    }
+    restart(){
+      alert("This Feature will be Avialable in Updated Version!");
+      // This code to update in next version
+      // Relod the page which this method is called
+    }
+
     checkData(data){
-      //console.alert("data recieved");,
+      //Check if eneterd data is valid or not
 
       if(data<this.CGC+4 && data >this.CGC && data<=15 && this.CGC <=15){
         this.check=false;
-        //this.CGC=data;
+        
         this.turn="You Trun Now";
         this.turn_class="text-successs";
 
@@ -226,19 +223,17 @@
 
 
     ngOnInit(): void {
-
-      this.CGC=0;
-      this.setUppberbond();
+      // This method to be called whenever the view is rendered for the first time
+      this.CGC=0;                                                             // Current Game count set to zero
+      this.setUppberbond();                                                   // to Set the maximum digit the player can choose
       this.oninit=true;
-      this.GameStatus="Not Started! Start The Game";
+      this.GameStatus="Not Started! Start The Game";                          // Game Status , a
       this.colorResponse="text-danger";
-      //this.turn="You Trun Now";
       this.chatcontainer="chat-container";
       this.chatcontainerdarker="chat-container darker";
       this.imgcom="img-com";
       this.imgyou="img-you";
-    //  chatImgCom="img-com";
-    //  chatImgYou="img-you";
+   
     }
 
 
