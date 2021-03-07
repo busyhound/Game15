@@ -176,7 +176,7 @@
 
         }
         if(player=="com"){
-          this.turn="Sorry! Looks like this dumb Computer was outsmarts you for this time"
+          this.turn="Sorry! Looks like this dumb Computer outsmarts you for this time"
           this.GameZone="Game Over! Computer Won"
           this.GameStatus="Ooops ! Better Luck Next Time";
           this.colorResponse="text-danger";
